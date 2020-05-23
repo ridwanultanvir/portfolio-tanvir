@@ -5,8 +5,7 @@
     <meta charset="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1,
-            shrink-to-fit=no"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
     <!-- Bootstrap CSS -->
@@ -17,23 +16,29 @@
       crossorigin="anonymous"
     />
 
+    <script
+      src="https://kit.fontawesome.com/1b6978b925.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/1b6978b925.js"
+      crossorigin="anonymous"
+    ></script>
+
     {% load static %}
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@500&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/1b6978b925.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://kit.fontawesome.com/1b6978b925.js"
-      crossorigin="anonymous"
-    ></script>
+    <style>
+      .box {
+        border: 1px solid #000000;
+      }
+      .font_style {
+        font-family: "Palanquin Dark", sans-serif;
+      }
+    </style>
 
-    <title>Mynul Hasan Anik</title>
+    <title>Mynul Hasan Anik-Jobs</title>
   </head>
+
   <body>
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -51,50 +56,47 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link active" href="{% url 'home' %}"
+            <a class="nav-item nav-link" href="{% url 'home' %}"
               >Home <span class="sr-only">(current)</span></a
             >
             <a class="nav-item nav-link" href="#">Education</a>
-            <a class="nav-item nav-link" href="{% url 'jobs' %}">Jobs</a>
+            <a class="nav-item nav-link active" href="{% url 'jobs' %}">Jobs</a>
           </div>
         </div>
       </nav>
-      <div class="row mt-5">
-        <div class="col-12 text-center">
-          <img
-            src="{% static 'home.images/professional.jpg' %}"
-            class="rounded-circle img-fluid"
-            style="max-width: 50%; height: auto;"
-          />
-        </div>
-      </div>
-      <div class="row mt-5 text-center">
+
+      <div class="row mt-3">
         <div class="col-12">
-          <h3
+          <h2
             style="font-family: 'Palanquin Dark', sans-serif; font-size: 40px;"
           >
-            Mynul Hasan Anik
-          </h3>
-          <h2 class="mt-2">Pharmacist</h2>
+            Jobs
+          </h2>
+          <hr />
         </div>
       </div>
-      <div class="row mt-2 text-center">
-        <div class="col-12">
-          <a href="http://www.facebook.com"
-            ><span style="font-size: 40px; color: darkslategrey;" class="mr-3"
-              ><i class="fab fa-facebook"></i></span
-          ></a>
-          <a href="http://www.linkedin.com"
-            ><span style="font-size: 40px; color: darkslategrey;" class="mr-3"
-              ><i class="fab fa-linkedin-in"></i></span
-          ></a>
 
-          <a href="mailto:mynul@gmail.com"
-            ><span style="font-size: 40px; color: darkslategrey;"
-              ><i class="fas fa-at"></i></span
-          ></a>
+      {% for job in jobs.all %}
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="media">
+            <img
+              class="image-fluid mr-4 box"
+              style="max-width: 200px; height: auto;"
+              src="{{ job.image.url }}"
+            />
+            <div class="media-body">
+              <h3 class="mt-0">{{job.company}}</h3>
+              <h5>Position: {{job.position}}</h5>
+              <p>
+                {{ job.join_date }} to {{ job.end_date }}
+              </p>
+              <p>{{ job.description }}</p>
+            </div>
+          </div>
         </div>
       </div>
+      {% endfor %}
     </div>
 
     <!-- Optional JavaScript -->
