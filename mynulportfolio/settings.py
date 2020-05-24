@@ -25,7 +25,7 @@ SECRET_KEY = '%gzdd^enr6u67ge+hn_xafn7_ilm%tx9fhq8-jdc%bke+@0_z7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sadattestserver.pythonanywhere.com']
 
 
 # Application definition
